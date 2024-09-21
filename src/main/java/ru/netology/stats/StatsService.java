@@ -2,29 +2,29 @@ package ru.netology.stats;
 
 public class StatsService {
 
-    public int allMonthsSales(long[] sales) {
+    public long allMonthsSales(long[] sales) {
         /*long allSumSales = 0; // сумма всех продаж
         for (int i = 0; i < sales.length; i++) {
             allSumSales = allSumSales + sales[i];
         }
-        return (int) allSumSales; - 1-й вариант  */
+        return allSumSales; - 1-й вариант  */
 
         long allSumSales = 0;
         for (long sale : sales) {
             allSumSales = allSumSales + sale;
         }
-        return (int) allSumSales; // 2-й вариант
+        return allSumSales; // 2-й вариант
     }
 
-    public int averageMonthSales(long[] sales) {
+    public long averageMonthSales(long[] sales) {
        /* long averageSumSales = 0; // средняя сумма продаж
         for (int i = 0; i < sales.length; i++) {
-            averageSumSales = (averageSumSales + sales[i]);
+            averageSumSales = averageSumSales + sales[i];
         }
-        return (int) averageSumSales / sales.length; */ // 1-й вариант
+        return averageSumSales / sales.length; */ // 1-й вариант
 
         long averageSumSales = allMonthsSales(sales) / sales.length;
-        return (int) averageSumSales; // 2-й вариант
+        return averageSumSales; // 2-й вариант
     }
 
 
@@ -53,20 +53,22 @@ public class StatsService {
     public int lowerAverageSalesMonths(long[] sales) {
 
         int monthsQuality = 0;
-        for (int i = 0; i < sales.length; i++)
+        for (int i = 0; i < sales.length; i++) {
             if (sales[i] < averageMonthSales(sales)) {
                 monthsQuality++;
             }
+        }
         return monthsQuality;  // продажи ниже среднего
     }
 
-    public int HigherAverageSalesMonths(long[] sales) {
+    public int higherAverageSalesMonths(long[] sales) {
 
         int monthsQuality = 0;
-        for (int i = 0; i < sales.length; i++)
-            if (sales[i] >= averageMonthSales(sales)) {
+        for (int i = 0; i < sales.length; i++) {
+            if (sales[i] > averageMonthSales(sales)) {
                 monthsQuality++;
             }
+        }
         return monthsQuality; // продажи выше среднего
     }
 }
